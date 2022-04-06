@@ -68,7 +68,7 @@ public class AirportImpTest {
        Result result1 = airportAbstract.delete(airport.getId());
        Result result2 = airportAbstract.delete(airportnew.getId());
        assertEquals(result1.isSuccess(),true);
-       assertEquals(result1.isSuccess(),true);
+       assertEquals(result2.isSuccess(),true);
        assertEquals(airportRepository.findAll().size(),0);
     }
 
