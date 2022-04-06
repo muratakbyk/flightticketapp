@@ -1,0 +1,6 @@
+#FileLock
+#Mon Mar 07 14:15:05 TRT 2022
+server=192.168.1.29\:62323
+hostName=192.168.1.29
+method=file
+id=17f6416d4968946f853fed10a3871d96a0ccefe374e
