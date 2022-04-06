@@ -18,7 +18,6 @@ public class RouteImpTest {
     Airport airport;
     Airport airport2;
     Route route;
-    Route route1;
     @Autowired
     RouteAbstract routeAbstract;
     @Autowired
@@ -51,11 +50,14 @@ public class RouteImpTest {
 
     @Test
     void createRouteTest(){
+        assertEquals(routeRepository.findByDepartureAirportId(airport2.getId()).size(),0);
         Result result = routeAbstract.createRoute(airport2.getId(),airport.getId());
         Route insertedRoute = routeRepository.findByDepartureAirportId(airport2.getId()).get(0);
         assertNotNull(insertedRoute);
         assertEquals(result.isSuccess(),true);
         assertEquals(insertedRoute.getDepartureAirport().getId(),airport2.getId());
+        assertEquals(routeRepository.findByDepartureAirportId(airport2.getId()).size(),1);
+
     }
 
     @Test
