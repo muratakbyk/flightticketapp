@@ -107,21 +107,22 @@ public class FlightTicketImpTest {
 
         @Test
         void createFlightTicketTest() {
+        assertEquals(flightRepository.getById(flight.getId()).getFlightTickets().size(),0);
         Result result = flightTicketAbstract.createFlightTicket(flight.getId(),sellFlightTicket);
         FlightTicket flightTicket1 = flightRepository.getById(flight.getId()).getFlightTickets().get(0);
         assertNotNull(flightTicket1);
         assertEquals(result.isSuccess(),true);
+        assertEquals(flightRepository.getById(flight.getId()).getFlightTickets().size(),1);
         assertEquals(flightTicket1.getFlight().getId(),flight.getId());
         }
 
         @Test
         void deleteFlightTicketTest(){
-        FlightTicket flightTicket1 = flightTicketRepository.getById(flightTicket.getId());
-        assertNotNull(flightTicket1);
-        assertEquals(flightRepository.getById(flightTicket1.getFlight().getId()).getFlightTickets().size(),1);
-        Result result = flightTicketAbstract.delete(flightTicket1.getId());
+        assertNotNull(flightTicket);
+        assertEquals(flightTicketRepository.findAll().size(),1);
+        Result result = flightTicketAbstract.delete(flightTicket.getId());
         assertEquals(result.isSuccess(),true);
-        assertEquals(flightRepository.getById(flightTicket1.getFlight().getId()).getFlightTickets().size(),0);
+        assertEquals(flightTicketRepository.findAll().size(),0);
         }
 
         @Test

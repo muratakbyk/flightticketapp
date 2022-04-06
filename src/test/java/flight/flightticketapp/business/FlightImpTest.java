@@ -100,10 +100,9 @@ public class FlightImpTest {
 
     @Test
     void deleteFlightTest(){
-        Flight flight1 = flightRepository.findAll().get(0);
-        assertNotNull(flight1);
+        assertNotNull(flight);
         assertEquals(flightRepository.findAll().size(),1);
-        Result result = flightAbstract.delete(flight1.getId());
+        Result result = flightAbstract.delete(flight.getId());
         assertEquals(result.isSuccess(),true);
         assertEquals(flightRepository.findAll().size(),0);
     }

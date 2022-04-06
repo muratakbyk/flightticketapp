@@ -60,12 +60,11 @@ public class RouteImpTest {
 
     @Test
     void deleteRouteTest(){
-        Route route2 = routeRepository.getById(route.getId());
-        //assertNotNull(routeRepository.getById(route2.getId()));
-        assertEquals(routeRepository.findByDepartureAirportId(route2.getDepartureAirport().getId()).size(),1);
-        Result result = routeAbstract.delete(route2.getId());
-        assertEquals(result.isSuccess(),true);
-        assertEquals(routeRepository.findByDepartureAirportId(route2.getDepartureAirport().getId()).size(),0);
+     assertNotNull(route);
+     assertEquals(routeRepository.findAll().size(),1);
+     Result result = routeAbstract.delete(route.getId());
+     assertEquals(result.isSuccess(),true);
+     assertEquals(routeRepository.findAll().size(),0);
     }
 
     @Test
@@ -73,6 +72,7 @@ public class RouteImpTest {
         Route route2 = routeAbstract.findByDepartureAirportId(airport.getId()).getData().get(0);
         assertNotNull(route2);
         assertEquals(route.getId(),route2.getId());
+        assertEquals(route.getDepartureAirport().getId(),route2.getDepartureAirport().getId());
         assertEquals(route.getArrivalAirport().getId(),route2.getArrivalAirport().getId());
     }
 
@@ -87,6 +87,7 @@ public class RouteImpTest {
     void findByDepartureAndArrivalAirportIdTest(){
         assertEquals(routeAbstract.findByDepartureAndArrivalAirportId(airport.getId(),airport2.getId()).getData().size(),1);
         Route route2 = routeAbstract.findByDepartureAndArrivalAirportId(airport.getId(),airport2.getId()).getData().get(0);
+        assertEquals(route2.getId(),route.getId());
         assertEquals(route2.getDepartureAirport().getId(),airport.getId());
         assertEquals(route2.getArrivalAirport().getId(),airport2.getId());
     }

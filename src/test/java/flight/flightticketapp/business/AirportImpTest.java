@@ -28,6 +28,7 @@ public class AirportImpTest {
     Airport airportnew;
     String airportName1="ISTANBUL AIRPORT";
     String airportName2 = "SABIHA GOKCEN AIRPORT";
+    String airportName3 = "ATATUK AIRPORT";
     @BeforeEach
     void setUp(){
         airport = new Airport();
@@ -45,11 +46,11 @@ public class AirportImpTest {
 
     @Test
     void createAirportTest(){
-        Result result = airportAbstract.createAirport(airportName1,"Istanbul","Turkey");
-        Airport insertedAirport = airportRepository.findByName(airportName1).get(0);
+        Result result = airportAbstract.createAirport(airportName3,"Istanbul","Turkey");
+        Airport insertedAirport = airportRepository.findByName(airportName3).get(0);
         assertNotNull(insertedAirport);
-        assertEquals(result.getMessage(), Messages.airportCreated);
-        assertEquals(insertedAirport.getName(),airportName1);
+        assertEquals(result.isSuccess(), true);
+        assertEquals(insertedAirport.getName(),airportName3);
 
     }
 
@@ -61,14 +62,14 @@ public class AirportImpTest {
 
     @Test
     void deleteAirportTest(){
-        Airport airport1 = airportRepository.findByName(airportName2).get(0);
-        assertNotNull(airport1);
-        assertEquals(airport1.getName(),airportName2);
-        assertEquals(airportRepository.findById(airport1.getId()).get().getId(),airport1.getId());
-        assertEquals(airportRepository.findByName(airportName2).size(),1);
-        Result result = airportAbstract.delete(airport1.getId());
-        assertEquals(result.isSuccess(),true);
-        assertEquals(airportRepository.findByName(airportName2).size(),0);
+       assertNotNull(airport);
+       assertNotNull(airportnew);
+       assertEquals(airportRepository.findAll().size(),2);
+       Result result1 = airportAbstract.delete(airport.getId());
+       Result result2 = airportAbstract.delete(airportnew.getId());
+       assertEquals(result1.isSuccess(),true);
+       assertEquals(result1.isSuccess(),true);
+       assertEquals(airportRepository.findAll().size(),0);
     }
 
     @Test
@@ -82,16 +83,15 @@ public class AirportImpTest {
 
     @Test
     void getAllAirportsTest(){
-        assertEquals(airportAbstract.getAirports().getData().size(),1);
+        assertEquals(airportAbstract.getAirports().getData().size(),2);
         assertNotNull(airportAbstract.getAirports());
     }
 
     @Test
     void getAirportsByName(){
-        Airport airport4 = airportAbstract.getAirportByAirportName(airportName2).getData().get(0);
-        assertNotNull(airport4);
-        assertEquals(airport4.getName(),airportnew.getName());
-        assertEquals(airport4.getId(),airportnew.getId());
-
+      Airport airport3 = airportAbstract.getAirportByAirportName(airport.getName()).getData().get(0);
+      assertNotNull(airport3);
+      assertEquals(airport3.getId(),airport.getId());
+      assertEquals(airport3.getName(),airport.getName());
     }
 }

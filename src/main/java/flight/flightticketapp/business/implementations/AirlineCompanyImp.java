@@ -22,7 +22,7 @@ public class AirlineCompanyImp implements AirlineCompanyAbstract {
     public Result add(AirlineCompany airlineCompany) {
 
         airlineCompanyRepository.save(airlineCompany);
-        return new SuccessResult(Messages.airlineCompanyAdded);
+        return new SuccessResult(Messages.airlineCompanyCreated);
     }
 
     @Override

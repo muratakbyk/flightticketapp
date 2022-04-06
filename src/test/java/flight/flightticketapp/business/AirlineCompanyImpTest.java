@@ -39,7 +39,7 @@ public class AirlineCompanyImpTest {
         Result result = airlineCompanyAbstract.createAirlineCompany(airlineCompanyName);
         AirlineCompany insertedAirline = airlineCompanyRepository.findByName(airlineCompanyName).get(0);
         assertNotNull(insertedAirline);
-        assertEquals(result.getMessage(), Messages.airlineCompanyAdded);
+        assertEquals(result.isSuccess(), true);
         assertEquals(insertedAirline.getName(),airlineCompanyName);
     }
 
@@ -51,15 +51,11 @@ public class AirlineCompanyImpTest {
 
     @Test
     void deleteAirlineCompanyTest(){
-        AirlineCompany airlineCompany1 = airlineCompanyRepository.findByName(airlineCompanyName2).get(0);
-        assertNotNull(airlineCompany1);
-        assertEquals(airlineCompany1.getName(),airlineCompanyName2);
-       // assertEquals(airlineCompanyRepository.findById(airlineCompany1.getId()).get().getName(),airlineCompanyName2);
-        assertEquals(airlineCompanyRepository.findById(airlineCompany1.getId()).get().getId(),airlineCompany1.getId());
-        assertEquals(airlineCompanyRepository.findByName(airlineCompanyName2).size(),1);
-        Result result = airlineCompanyAbstract.delete(airlineCompany1.getId());
+        assertNotNull(airlineCompany);
+        assertEquals(airlineCompanyRepository.findAll().size(),1);
+        Result result = airlineCompanyAbstract.delete(airlineCompany.getId());
         assertEquals(result.isSuccess(),true);
-        assertEquals(airlineCompanyRepository.findByName(airlineCompanyName2).size(),0);
+        assertEquals(airlineCompanyRepository.findAll().size(),0);
     }
 
     @Test

@@ -17,7 +17,7 @@ public class AirportController {
     AirportAbstract airportAbstract;
 
     @PostMapping("/createAirport")
-    public Result createAirport( String name,  String city, String country){
+    public Result createAirport(@RequestParam  String name,  String city, String country){
         return airportAbstract.createAirport(name, city, country);
     }
     @GetMapping("/airportGetByName")
