@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface AirlineCompanyAbstract extends BaseEntityAbstract<AirlineCompany> {
     Result createAirlineCompany(String name);
-    DataResult<AirlineCompany> getById(int id);
     DataResult<List<AirlineCompany>> getAirlineCompaniesByName (String name);
     DataResult<List<AirlineCompany>> getAllAirlineCompanies();
 

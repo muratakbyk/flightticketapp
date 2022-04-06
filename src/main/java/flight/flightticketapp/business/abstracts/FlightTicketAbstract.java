@@ -10,6 +10,5 @@ import java.util.Date;
 
 public interface FlightTicketAbstract extends BaseEntityAbstract<FlightTicket> {
 
-    DataResult<FlightTicket> getById(int id);
     Result createFlightTicket(int flightId, SellFlightTicket sellFlightTicket );
 }

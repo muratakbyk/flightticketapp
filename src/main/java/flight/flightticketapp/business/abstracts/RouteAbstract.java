@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface RouteAbstract extends BaseEntityAbstract<Route> {
 
-    DataResult<Route> getById(int id);
     DataResult<List<Route>> findByArrivalAirportId(int arrivalAirportId);
     DataResult<List<Route>> findByDepartureAirportId(int departureAirportId);
     DataResult<List<Route>> findByDepartureAndArrivalAirportId(int departureAirportId, int arrivalAirportId);

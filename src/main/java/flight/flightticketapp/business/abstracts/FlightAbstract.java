@@ -10,7 +10,6 @@ import java.util.List;
 public interface FlightAbstract extends BaseEntityAbstract<Flight> {
 
     Result createFlight(int routeId, int airlinesCompanyId, int flightSeatCount, double flightPrice, Date date );
-    DataResult<Flight> getById(int id);
     DataResult<List<Flight>> getAllFlights();
 
 }
