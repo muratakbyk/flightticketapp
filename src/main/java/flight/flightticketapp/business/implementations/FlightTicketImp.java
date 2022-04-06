@@ -39,7 +39,7 @@ public class FlightTicketImp implements FlightTicketAbstract {
 
     @Override
     public DataResult<FlightTicket> getById(int id) {
-        return new SuccessDataResult<FlightTicket>(flightTicketRepository.getById(id));
+        return new SuccessDataResult<FlightTicket>(flightTicketRepository.findById(id).get());
     }
 
     @Override
