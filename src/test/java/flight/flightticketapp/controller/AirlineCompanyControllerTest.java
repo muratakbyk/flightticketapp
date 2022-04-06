@@ -1,6 +1,5 @@
 package flight.flightticketapp.controller;
 
-import com.google.gson.Gson;
 import flight.flightticketapp.core.utilities.DataResult;
 import flight.flightticketapp.core.utilities.Result;
 import flight.flightticketapp.entities.AirlineCompany;
