@@ -31,6 +31,6 @@ public class SellFlightTicketImp implements SellFlightTicketAbstract {
 
     @Override
     public DataResult<SellFlightTicket> getById(int id) {
-        return new SuccessDataResult<SellFlightTicket>(sellFlightTicketRepository.getById(id));
+        return new SuccessDataResult<SellFlightTicket>(sellFlightTicketRepository.findById(id).get());
     }
 }
