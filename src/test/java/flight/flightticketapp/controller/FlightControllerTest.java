@@ -18,8 +18,11 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -47,7 +50,7 @@ public class FlightControllerTest {
     AirlineCompany airlineCompany;
     int flightSeatCount = 50;
     double flightPrice = 200;
-    String date = "2022/09/22";
+    String date = "2022-09-22 15:40:00";
     @BeforeEach
     void setUp(){
 
@@ -76,7 +79,7 @@ public class FlightControllerTest {
         flightRepository.save(flight);
     }
     @Test
-    public void testCreateFlight() {
+    public void testCreateFlight() throws ParseException {
         StringBuilder testUrl = new StringBuilder();
         testUrl.append("http://localhost:");
         testUrl.append(port);
@@ -87,6 +90,7 @@ public class FlightControllerTest {
         testUrl.append("flightSeatCount={flightSeatCount}&");
         testUrl.append("flightPrice={flightPrice}&");
         testUrl.append("date={date}");
+
 
         ResponseEntity<Result> responseEntity = restTemplate.postForEntity(testUrl.toString(),
                 null,

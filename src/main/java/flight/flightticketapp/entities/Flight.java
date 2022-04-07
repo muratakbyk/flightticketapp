@@ -16,6 +16,8 @@ public class Flight {
     private int id;
 
     @Column(name="flight_date",nullable = false)
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     @Column(name="flight_seat",nullable = false)
