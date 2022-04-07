@@ -29,7 +29,6 @@ public class FlightTicketImpTest {
     Airport airport;
     Airport airport2;
     SellFlightTicket sellFlightTicket;
-    String date = "2022-09-11 12:10:40";
     @Autowired
     FlightTicketRepository flightTicketRepository;
     @Autowired
@@ -67,16 +66,14 @@ public class FlightTicketImpTest {
         route.setArrivalAirport(airport);
         routeRepository.save(route);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-        formatter.setTimeZone(TimeZone.getTimeZone("Turkey"));
-        Date departure = formatter.parse(date);
+
 
         flight = new Flight();
         flight.setRoute(route);
         flight.setFlightAirlineCompany(airlineCompany);
         flight.setFlightSeat(20);
         flight.setFlightPrice(200);
-        flight.setDate(departure);
+        flight.setDate(new Date());
         flightRepository.save(flight);
 
         flight1 = new Flight();
@@ -84,7 +81,7 @@ public class FlightTicketImpTest {
         flight1.setFlightAirlineCompany(airlineCompany);
         flight1.setFlightSeat(20);
         flight1.setFlightPrice(100);
-        flight1.setDate(departure);
+        flight1.setDate(new Date());
         flightRepository.save(flight1);
 
         sellFlightTicket = new SellFlightTicket();
@@ -100,7 +97,7 @@ public class FlightTicketImpTest {
         flightTicket.setFlight(flight1);
         flightTicket.setFlightTicketSell(sellFlightTicket);
         flightTicket.setValid(true);
-        flightTicket.setDate(departure);
+        flightTicket.setDate(new Date());
         flightTicket.setPrice(100);
         flightTicketRepository.save(flightTicket);
         }

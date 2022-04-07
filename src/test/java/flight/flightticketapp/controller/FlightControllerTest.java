@@ -47,7 +47,7 @@ public class FlightControllerTest {
     AirlineCompany airlineCompany;
     int flightSeatCount = 50;
     double flightPrice = 200;
-    String date = "2022-09-22 10:15:55";
+    String date = "2022/09/22";
     @BeforeEach
     void setUp(){
 

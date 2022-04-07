@@ -35,8 +35,7 @@ public class FlightImpTest {
     int flightSeatCount = 30;
     double flightPrice = 300;
 
-    String departureDate = "2022-09-11 12:10:40";
-    String departureDate2 = "2022-10-05 12:10:40";
+
 
     @Autowired
     FlightAbstract flightAbstract;
@@ -75,16 +74,14 @@ public class FlightImpTest {
         airlineCompany.setName("THY");
         airlineCompanyRepository.save(airlineCompany);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-        formatter.setTimeZone(TimeZone.getTimeZone("Turkey"));
-        Date departure = formatter.parse(departureDate);
+
 
         flight = new Flight();
         flight.setFlightAirlineCompany(airlineCompany);
         flight.setRoute(route);
         flight.setFlightSeat(flightSeatCount);
         flight.setFlightPrice(flightPrice);
-        flight.setDate(departure);
+        flight.setDate(new Date());
         flightRepository.save(flight);
     }
 

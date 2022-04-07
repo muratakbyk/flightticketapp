@@ -20,7 +20,7 @@ public class FlightController {
 
     @PostMapping("/createFlight")
     public Result createFlight(@RequestParam int routeId, @RequestParam int airlinesCompanyId,
-                               @RequestParam int flightSeatCount, @RequestParam double flightPrice,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+                               @RequestParam int flightSeatCount, @RequestParam double flightPrice,@RequestParam  Date date) {
         return flightAbstract.createFlight(routeId, airlinesCompanyId, flightSeatCount, flightPrice, date);
     }
 
