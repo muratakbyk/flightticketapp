@@ -1,8 +1,9 @@
 # flightticketapp
 
+this project is a flight ticket backend service.
+
 to use Swagger UI --> http://localhost:8080/swagger-ui/index.html
 
-this project is a flight ticket backend service.
 
 # project features:
 
